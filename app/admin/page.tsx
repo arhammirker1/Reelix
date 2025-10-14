@@ -118,7 +118,7 @@ interface ActivityItem {
 const defaultContent: ContentData = {
   hero: {
     title: "HIGH-IMPACT 3D ANIMATION FOR BRANDS",
-    subtitle: "skitbit",
+    subtitle: "Reelix",
     buttonText: "Chat With Us",
   },
   features: {
@@ -130,8 +130,8 @@ const defaultContent: ContentData = {
     copyright: "© 2025 — Skitbit International Uk",
   },
   about: {
-    title: "About Skitbit International",
-    description: "Pioneering the future of 3D product animation for global brands.",
+    title: "About Reelix International",
+    description: "Pioneering the future of Video Editing for global brands.",
     mission: "To create stunning 3D animations that help brands tell their story and connect with their audience.",
     vision: "To be the world's leading 3D animation studio, known for creativity, quality, and innovation.",
     teamSize: "50+ Creative Professionals",
@@ -1602,7 +1602,7 @@ export default function AdminDashboard() {
               <CardContent className="space-y-4">
                 <div>
                   <p className="text-white font-medium">Email Support</p>
-                  <p className="text-neutral-400 text-sm">admin@theskitbit.com</p>
+                  <p className="text-neutral-400 text-sm">admin@reelix.com</p>
                 </div>
                 <div>
                   <p className="text-white font-medium">Response Time</p>

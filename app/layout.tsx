@@ -8,10 +8,10 @@ import Plasma from "@/components/plasma"
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  title: "Skitbit | 3D Animation Made Simple, Reliable & Scalable",
+  title: "Reelix | Video Editing Made Simple, Reliable & Scalable",
   description:
-    "From product launches to full-scale campaigns, Skitbit delivers 3D animation that's fast, consistent, and built to wow your audience.",
-  generator: "v0.app",
+    "From product launches to full-scale campaigns, Reelix delivers 3D animation that's fast, consistent, and built to wow your audience.",
+  generator: "ALI",
 }
 
 export default function RootLayout({

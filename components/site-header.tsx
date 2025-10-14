@@ -28,7 +28,7 @@ export function SiteHeader() {
               height={20}
               className="h-5 w-5"
             />
-            <span className="font-semibold tracking-wide text-white">Skitbit</span>
+            <span className="font-semibold tracking-wide text-white">Reelix</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -82,7 +82,7 @@ export function SiteHeader() {
                     height={24}
                     className="h-6 w-6"
                   />
-                  <span className="font-semibold tracking-wide text-white text-lg">Skitbit</span>
+                  <span className="font-semibold tracking-wide text-white text-lg">Reelix</span>
                 </div>
 
                 {/* Nav Links */}
