@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Reelix | Video Editing Made Simple, Reliable & Scalable",
   description:
     "From product launches to full-scale campaigns, Reelix delivers 3D animation that's fast, consistent, and built to wow your audience.",
-  generator: "ALI",
+  generator: "Arham Mirkar",
 }
 
 export default function RootLayout({
