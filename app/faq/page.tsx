@@ -13,44 +13,43 @@ export default function FAQPage() {
                 <header className="space-y-4">
                   <h1 className="text-4xl font-bold tracking-tight text-lime-300">Frequently Asked Questions</h1>
                   <p className="text-neutral-400 text-lg">
-                    Answers to common questions we get from brands about 3D animation and rendering for products.
+                    Answers to common questions we get from SaaS founders about explainer videos and investor pitch decks.
                   </p>
                 </header>
 
                 <section className="space-y-3">
                   <h2 className="text-2xl font-semibold text-white">
-                    1. What types of products can you animate or render?
+                    1. What types of SaaS products do you create explainer videos for?
                   </h2>
                   <p className="text-neutral-300">
-                    We can create photorealistic 3D animations and renders for almost any product — from beauty and
-                    skincare to electronics, furniture, and luxury goods. If it exists (or is planned), we can bring it
-                    to life.
+                    We specialize in all types of SaaS products — from B2B enterprise software to consumer apps, fintech platforms, 
+                    AI tools, and productivity solutions. If your product has a complex value proposition, we can simplify it visually.
                   </p>
                 </section>
 
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">2. How long does a typical 3D animation take?</h2>
+                  <h2 className="text-2xl font-semibold text-white">2. How long does a typical explainer video take to produce?</h2>
                   <p className="text-neutral-300">
-                    Timelines vary depending on complexity, but a standard 15–20 second animation usually takes 7–14
-                    working days after final concept approval.
+                    Timelines vary depending on complexity and package, but a standard 60-second explainer video usually takes 
+                    10–14 working days after script approval. Our Startup plan delivers in 5–7 days for simpler projects.
                   </p>
                 </section>
 
                 <section className="space-y-3">
                   <h2 className="text-2xl font-semibold text-white">
-                    3. Do you work with existing CAD files or need product samples?
+                    3. Do you write the script, or do we need to provide one?
                   </h2>
                   <p className="text-neutral-300">
-                    We can work with both. If you have CAD or 3D models, we can import and refine them. If not, we can
-                    create models from physical product samples or detailed reference images.
+                    It depends on your package. Our Pro and Premium plans include professional scriptwriting. For the Startup plan, 
+                    we can clean up and optimize your provided script, or you can upgrade to add full scriptwriting.
                   </p>
                 </section>
 
                 <section className="space-y-3">
                   <h2 className="text-2xl font-semibold text-white">4. How do you price your services?</h2>
                   <p className="text-neutral-300">
-                    Pricing is based on animation length, complexity, number of renders, and modeling requirements. You
-                    can view our detailed pricing on our{" "}
+                    Pricing is based on video length, animation complexity, whether scriptwriting or voiceover is included, 
+                    and turnaround time. You can view our detailed pricing on our{" "}
                     <a href="/pricing" className="text-lime-300 underline">
                       pricing page
                     </a>
@@ -59,51 +58,48 @@ export default function FAQPage() {
                 </section>
 
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">5. Can we request changes after delivery?</h2>
+                  <h2 className="text-2xl font-semibold text-white">5. Can we request revisions after delivery?</h2>
                   <p className="text-neutral-300">
-                    Yes. All revisions are covered under our{" "}
-                    <a href="/revisions" className="text-lime-300 underline">
-                      revision policy
-                    </a>
-                    , which ensures smooth updates without unexpected scope creep.
+                    Yes. Each package includes a specific number of revisions (1–3 rounds depending on your plan). 
+                    Our Premium plan offers unlimited minor revisions to ensure your complete satisfaction.
                   </p>
                 </section>
 
                 <section className="space-y-3">
                   <h2 className="text-2xl font-semibold text-white">
-                    6. Will the renders match our brand’s visual style?
+                    6. Will the video match our brand's visual style?
                   </h2>
                   <p className="text-neutral-300">
-                    Absolutely. We customize lighting, materials, camera angles, and animation pacing to fit your
-                    brand’s identity and marketing needs.
+                    Absolutely. We integrate your brand colors, fonts, logo, and overall design language into every frame. 
+                    We can match existing brand guidelines or help develop a visual style that resonates with your target audience.
                   </p>
                 </section>
 
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">7. What formats do you deliver in?</h2>
+                  <h2 className="text-2xl font-semibold text-white">7. What formats do you deliver the final video in?</h2>
                   <p className="text-neutral-300">
-                    We typically deliver in MP4 (H.264) for videos and high-resolution PNG/JPG for stills. Other formats
-                    like MOV, ProRes, or transparent-background renders are available on request.
-                  </p>
-                </section>
-
-                <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">
-                    8. Can you handle large-scale projects or bulk renders?
-                  </h2>
-                  <p className="text-neutral-300">
-                    Yes, we regularly work on bulk orders for 10+ animations or 50+ renders. We optimize workflows to
-                    maintain quality and meet tight deadlines.
+                    We typically deliver in MP4 (H.264) optimized for web and social media, plus high-resolution versions 
+                    for presentations. Other formats like MOV, ProRes, or square/vertical cuts for Instagram/TikTok are available on request.
                   </p>
                 </section>
 
                 <section className="space-y-3">
                   <h2 className="text-2xl font-semibold text-white">
-                    9. Do you offer creative direction or only technical execution?
+                    8. Do you also create investor pitch decks?
                   </h2>
                   <p className="text-neutral-300">
-                    We do both. Our team can develop creative concepts, storyboards, and camera moves, or simply execute
-                    your pre-approved vision.
+                    Yes! Our Premium plan includes a complete VC-ready pitch deck (15–18 slides) designed to complement your 
+                    explainer video. We focus on clear messaging, compelling visuals, and investor-focused storytelling.
+                  </p>
+                </section>
+
+                <section className="space-y-3">
+                  <h2 className="text-2xl font-semibold text-white">
+                    9. Can you animate our actual product UI or do you create mockups?
+                  </h2>
+                  <p className="text-neutral-300">
+                    We can do both! If you have Figma designs or screenshots, we can bring them to life with smooth UI animations. 
+                    For products in early stages, we can create stylized mockups that represent your vision.
                   </p>
                 </section>
 
@@ -114,7 +110,8 @@ export default function FAQPage() {
                     <a href="/contact" className="text-lime-300 underline">
                       contact us
                     </a>{" "}
-                    with your project details, references, and timeline. We’ll provide a proposal and next steps.
+                    with your SaaS product details, target audience, and goals. We'll schedule a discovery call, 
+                    provide a tailored proposal, and outline the next steps to bring your story to life.
                   </p>
                 </section>
               </div>

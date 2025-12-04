@@ -14,55 +14,111 @@ export default function RevisionPolicyPage() {
                 <header className="space-y-4">
                   <h1 className="text-4xl font-bold tracking-tight text-lime-300">Revision Policy</h1>
                   <p className="text-neutral-400 text-lg">
-                    Our revision policy ensures transparency and fairness for all clients while maintaining the quality and efficiency of our work.
+                    Our revision policy ensures transparency and fairness for all clients while maintaining the quality and efficiency of our explainer videos and pitch decks.
                   </p>
                 </header>
 
                 <section className="space-y-3">
                   <h2 className="text-2xl font-semibold text-white">1. Included Revisions</h2>
                   <p className="text-neutral-300">
-                    Each plan includes a set number of revisions as listed in its respective tier:
+                    Each plan includes a set number of revision rounds as listed in its respective tier:
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-neutral-400">
-                    <li>Startup Plan: 2 revisions included</li>
-                    <li>Pro Plan: 4 revisions included</li>
-                    <li>Premium Plan: Unlimited revisions within the agreed project scope</li>
+                    <li>Startup Plan: 1 revision round included</li>
+                    <li>Pro Plan: 2–3 revision rounds included</li>
+                    <li>Premium Plan: Unlimited minor revisions within the agreed project scope</li>
+                  </ul>
+                  <p className="text-neutral-300 mt-3">
+                    A revision round includes all feedback provided at one time. We encourage consolidating all changes into a single review to maximize efficiency.
+                  </p>
+                </section>
+
+                <section className="space-y-3">
+                  <h2 className="text-2xl font-semibold text-white">2. What Counts as a Revision?</h2>
+                  <p className="text-neutral-300">
+                    Revisions cover adjustments to the agreed deliverables, including:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-neutral-400">
+                    <li>Text or voiceover changes</li>
+                    <li>Color palette or branding adjustments</li>
+                    <li>Timing or pacing modifications</li>
+                    <li>Animation refinements within the original style</li>
+                    <li>Minor script edits (for plans with scriptwriting)</li>
                   </ul>
                 </section>
 
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">2. Additional Revisions</h2>
+                  <h2 className="text-2xl font-semibold text-white">3. What Is NOT Covered by Revisions?</h2>
                   <p className="text-neutral-300">
-                    Any revisions beyond the included amount will be charged at the following hourly rates:
+                    The following are considered scope changes and require a separate quote:
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-neutral-400">
-                    <li>Startup Plan: $35/hour</li>
-                    <li>Pro Plan: $55/hour</li>
-                    <li>Premium Plan: $60/hour</li>
+                    <li>Complete script rewrites or new messaging direction</li>
+                    <li>Change in animation style (e.g., 2D to 3D)</li>
+                    <li>Extending video length beyond the agreed duration</li>
+                    <li>Adding new scenes or characters not in the original concept</li>
+                    <li>Additional voiceover recording sessions</li>
+                    <li>New pitch deck slides beyond the agreed count</li>
                   </ul>
                 </section>
 
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">3. Scope of Revisions</h2>
+                  <h2 className="text-2xl font-semibold text-white">4. Additional Revisions</h2>
                   <p className="text-neutral-300">
-                    Revisions are meant to refine and adjust the agreed deliverables, not to expand the original scope of work. Significant changes or additions will require a new project agreement.
+                    If you exceed your included revision rounds, additional revisions are available at the following rates:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-neutral-400">
+                    <li>Startup Plan: $50 per additional revision round</li>
+                    <li>Pro Plan: $75 per additional revision round</li>
+                    <li>Premium Plan: Minor revisions remain unlimited; major scope changes are quoted separately</li>
+                  </ul>
+                </section>
+
+                <section className="space-y-3">
+                  <h2 className="text-2xl font-semibold text-white">5. Turnaround Time for Revisions</h2>
+                  <p className="text-neutral-300">
+                    Revision turnaround depends on the complexity of changes and our current workload:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-neutral-400">
+                    <li>Minor revisions (text, color tweaks): 2–3 business days</li>
+                    <li>Moderate revisions (timing, animation adjustments): 3–5 business days</li>
+                    <li>Major revisions (significant rework): 5–7 business days</li>
+                  </ul>
+                  <p className="text-neutral-300 mt-3">
+                    Rush revisions are available for an additional fee. Please contact us for expedited timelines.
                   </p>
                 </section>
 
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">4. Turnaround Time</h2>
+                  <h2 className="text-2xl font-semibold text-white">6. Feedback Process</h2>
                   <p className="text-neutral-300">
-                    The turnaround time for revisions will depend on the complexity of the requested changes and current project workload.
+                    To ensure smooth revisions:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-neutral-400">
+                    <li>Provide feedback in a single consolidated document or email</li>
+                    <li>Use timestamps for video feedback (e.g., "At 0:15, change text to...")</li>
+                    <li>Be as specific as possible to avoid back-and-forth</li>
+                    <li>Include visual references or examples when helpful</li>
+                  </ul>
+                </section>
+
+                <section className="space-y-3">
+                  <h2 className="text-2xl font-semibold text-white">7. Final Deliverables</h2>
+                  <p className="text-neutral-300">
+                    Once you approve the final version, the project is considered complete. Any changes requested after final approval will be treated as a new project and quoted separately.
                   </p>
                 </section>
 
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-semibold text-white">5. Contact Us</h2>
+                  <h2 className="text-2xl font-semibold text-white">8. Contact Us</h2>
                   <p className="text-neutral-300">
-                    For questions regarding our revision policy, please contact us at:
+                    For questions regarding our revision policy or to request additional revisions, please contact us at:
                   </p>
                   <p className="text-neutral-300">
-                    Email: <a href="mailto:hello@theskitbit.com" className="text-lime-300 underline">hello@reelix.com</a>
+                    Email: <a href="mailto:hello@reelix.com" className="text-lime-300 underline">hello@reelix.com</a>
+                  </p>
+                  <p className="text-neutral-300">
+                    WhatsApp: <a href="https://wa.me/918384092211" className="text-lime-300 underline">+91 83840 92211</a>
                   </p>
                 </section>
               </div>

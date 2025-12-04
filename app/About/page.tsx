@@ -52,7 +52,7 @@ export default function AboutPage() {
           About Reelix
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto opacity-80">
-          Pioneering the future of Video Production for global brands.
+          Pioneering the future of Video Explainers for global brands.
         </p>
       </section>
 
@@ -61,28 +61,28 @@ export default function AboutPage() {
         <div className="grid gap-12 md:grid-cols-3">
           {[
             {
-              title: "3D Product Animation",
-              desc: "Photo-realistic animations that showcase your products in stunning detail.",
+              title: "High-Impact SaaS Explainer Videos",
+              desc: "Crystal-clear explanations that turn complex SaaS products into simple, compelling stories.",
             },
             {
-              title: "Global Reach",
-              desc: "Serving Miami, LA, New York, Canada, and the UK with world-class visuals.",
+              title: "Investor-Ready Pitch Decks",
+              desc: "Professionally crafted pitch decks designed to impress investors and communicate your vision.",
             },
             {
-              title: "Cutting-edge Technology",
-              desc: "Using the latest rendering engines and motion design tools.",
+              title: "Conversion-Focused Strategy",
+              desc: "Every video and deck is created with one goal—boost sign-ups, engagement, and investor confidence.",
             },
             {
-              title: "Brand Storytelling",
-              desc: "Helping brands communicate their vision through immersive 3D visuals.",
+              title: "Fast & Collaborative Workflow",
+              desc: "Work closely with our creative team for smooth communication and quick turnaround times.",
             },
             {
-              title: "Collaborative Workflow",
-              desc: "Work directly with our creative team for maximum efficiency.",
+              title: "Data-Driven Storytelling",
+              desc: "We structure your narrative using proven frameworks that resonate with SaaS buyers and VCs.",
             },
             {
-              title: "SEO & Marketing Focus",
-              desc: "Optimized content to enhance your visibility on search engines.",
+              title: "Global SaaS Expertise",
+              desc: "Helping startups and enterprises across the US, UK, Canada, and MENA bring their ideas to life.",
             },
           ].map((feature, index) => (
             <div
@@ -102,7 +102,7 @@ export default function AboutPage() {
           Ready to Elevate Your Brand?
         </h2>
         <p className="text-lg opacity-80 mb-8">
-          Let Reelix bring your products to life.
+          Let Reelix bring your Idea to life.
         </p>
         <a
           href="/contact"

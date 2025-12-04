@@ -117,38 +117,38 @@ interface ActivityItem {
 
 const defaultContent: ContentData = {
   hero: {
-    title: "HIGH-IMPACT 3D ANIMATION FOR BRANDS",
+    title: "HIGH-CONVERTING SAAS EXPLAINER VIDEOS & INVESTOR PITCH DECKS",
     subtitle: "Reelix",
     buttonText: "Chat With Us",
   },
   features: {
-    title: "What makes us the best studio for you.",
-    subtitle: "Discover our unique approach to 3D animation",
+    title: "Why SaaS Startups & Founders Choose Reelix",
+    subtitle: "Discover our unique approach to storytelling, clarity, and growth-focused visuals.",
   },
   footer: {
-    tagline: "Experience 3D animation like never before. We craft cinematic visuals for brands and products.",
-    copyright: "© 2025 — Skitbit International Uk",
+    tagline: "We help SaaS startups simplify their message with high-impact explainer videos and investor-ready pitch decks.",
+    copyright: "© 2025 — Reelix Agency",
   },
   about: {
     title: "About Reelix International",
-    description: "Pioneering the future of Video Editing for global brands.",
-    mission: "To create stunning 3D animations that help brands tell their story and connect with their audience.",
-    vision: "To be the world's leading 3D animation studio, known for creativity, quality, and innovation.",
-    teamSize: "50+ Creative Professionals",
+    description: "We specialize in creating SaaS explainer videos and pitch decks that help founders communicate with clarity and win investor trust.",
+    mission: "To help SaaS founders tell their story through compelling visuals that drive conversions and raise funding.",
+    vision: "To become the go-to global agency for startups looking to scale through world-class storytelling, branding, and investor communication.",
+    teamSize: "25+ SaaS-Focused Creatives",
     founded: "2020",
-    locations: "London, Noida, Bangalore, Mumbai, Toronto, New York, Dubai, Melbourne",
+    locations: "London, Noida, Bangalore, Saudia Arabia, Pakistan, Mumbai, Toronto, New York, Dubai, Melbourne",
   },
   pricing: {
     startup: {
       price_usd: "$299",
       price_inr: "₹25,000/-",
-      features: [
-        "Up to 15s 3D Animation",
-        "2 Revisions",
-        "Creative Backgrounds",
-        "Simple 3D Animation",
-        "7–10 Day Turnaround time",
-        "Simple 3D Models Included", // Updated to show it's included
+      features: [       
+        "Up to 45s SaaS Explainer Video",
+        "Script Cleanup (Provided by Client)",
+        "Basic Motion Graphics",
+        "1 Revision",
+        "5–7 Day Delivery",
+        "Brand Colors Integration", // Updated to show it's included
       ],
       videos: [
         "ysz5S6PUM-U",
@@ -166,12 +166,13 @@ const defaultContent: ContentData = {
       price_usd: "$699",
       price_inr: "₹55,000/-",
       features: [
-        "Up to 25s 3D Animation",
-        "4 Revisions",
-        "Creative Backgrounds, Lite graphics",
-        "Detailed 3D Animation",
-        "20–25 Day Turnaround",
-        "Pre-built 3D Models",
+        "Up to 60–75s SaaS Explainer Video",
+        "Scriptwriting Included",
+        "Professional Voiceover",
+        "Custom Motion Graphics",
+        "2–3 Revisions",
+        "10–14 Day Delivery",
+        "SaaS UI Animations (Figma to Motion)",
       ],
       videos: [
         "ASV2myPRfKA",
@@ -189,12 +190,13 @@ const defaultContent: ContentData = {
       price_usd: "$2,049",
       price_inr: "₹1,70,500/-",
       features: [
-        "40–60s 3D Animation",
-        "Creative Backgrounds, Lite graphics",
-        "Liquid, Smoke, Fire, Cloth Simulations",
-        "Lighting, Camera Animation, Depth effects",
-        "Priority – 20 Day Turnaround",
-        "Highly Complex 3D Models Included", // Updated to show it's included
+        "Complete Startup Package (Video + Pitch Deck)",
+        "90s Premium Explainer Video",
+        "VC-Ready Pitch Deck (15–18 Slides)",
+        "Advanced Illustrations + UI Animations",
+        "Unlimited Minor Revisions",
+        "Priority Delivery (7–10 Days)",
+        "Investor Positioning & Story Framework", // Updated to show it's included
       ],
       videos: [
         "v2AC41dglnM",
@@ -212,9 +214,9 @@ const defaultContent: ContentData = {
   orderForm: {
     whatsappNumber: "+918384092211",
     modelingOptions: {
-      simple: { price_usd: 35, price_inr: 3000, description: "Basic shapes, minimal details" },
-      medium: { price_usd: 60, price_inr: 5000, description: "Moderate details, textures" },
-      complex: { price_usd: 120, price_inr: 10000, description: "High detail, advanced geometry" },
+      simple: { price_usd: 35, price_inr: 3000, description: "Basic UI elements, minimal detail" },
+      medium: { price_usd: 60, price_inr: 5000, description: "Detailed UI screens, transitions" },
+      complex: { price_usd: 120, price_inr: 10000, description: "Advanced UI layouts and complex animations" },
     },
     renderOptions: {
       basic: { price_usd: 25, price_inr: 2000, quantity: 3 },
@@ -222,10 +224,10 @@ const defaultContent: ContentData = {
       premium: { price_usd: 60, price_inr: 5000, quantity: 10 },
     },
     formSteps: [
-      { enabled: true, title: "Package Selection", description: "Choose your animation package" },
-      { enabled: true, title: "3D Model Question", description: "Do you have a 3D model? (Pro plan only)" },
-      { enabled: true, title: "Modeling Add-on", description: "Select modeling complexity (Pro plan only)" },
-      { enabled: true, title: "Render Upsell", description: "Add 3D renders to your order" },
+      { enabled: true, title: "Package Selection", description: "Choose your video or pitch deck package" },
+      { enabled: true, title: "Script & Info", description: "Share your SaaS details and messaging" },
+      { enabled: true, title: "Design Preferences", description: "Tell us your brand style and tone" },
+      { enabled: true, title: "Add-ons", description: "Select upgrades like UI animations or voiceover" },
       { enabled: true, title: "Order Summary", description: "Review and confirm your order" },
     ],
   },
@@ -561,7 +563,7 @@ export default function AdminDashboard() {
                   <Sparkles className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">Content Management Active</h3>
+                  <h3 className="text-xl font-semibold">Video & Pitch Deck Management Active</h3>
                   <p className="text-purple-100">Your website content is live and ready for updates.</p>
                 </div>
               </div>
@@ -1239,29 +1241,29 @@ export default function AdminDashboard() {
                     <div className="p-4 border border-neutral-700 rounded-lg">
                       <h4 className="text-white font-semibold mb-2">Startup Plan</h4>
                       <div className="flex items-center justify-between">
-                        <span className="text-neutral-300 text-sm">Includes Simple 3D Modeling</span>
+                        <span className="text-neutral-300 text-sm">Includes Basic UI Animations</span>
                         <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Included</Badge>
                       </div>
                       <p className="text-neutral-400 text-xs mt-2">
-                        Skips 3D model questions, goes straight to render upsell
+                        Standard motion graphics, no custom animations needed
                       </p>
                     </div>
                     <div className="p-4 border border-neutral-700 rounded-lg">
                       <h4 className="text-white font-semibold mb-2">Pro Plan</h4>
                       <div className="flex items-center justify-between">
-                        <span className="text-neutral-300 text-sm">Optional 3D Modeling</span>
+                        <span className="text-neutral-300 text-sm">Optional Custom Animations</span>
                         <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">Optional</Badge>
                       </div>
-                      <p className="text-neutral-400 text-xs mt-2">Asks if user has model, offers modeling add-ons</p>
+                      <p className="text-neutral-400 text-xs mt-2">Offers UI animation upgrades and character animation add-ons</p>
                     </div>
                     <div className="p-4 border border-neutral-700 rounded-lg">
                       <h4 className="text-white font-semibold mb-2">Premium Plan</h4>
                       <div className="flex items-center justify-between">
-                        <span className="text-neutral-300 text-sm">Includes Complex 3D Modeling</span>
+                        <span className="text-neutral-300 text-sm">Includes Advanced Animations</span>
                         <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">Included</Badge>
                       </div>
                       <p className="text-neutral-400 text-xs mt-2">
-                        Skips 3D model questions, goes straight to render upsell
+                        Full animation package included, offers pitch deck upgrade
                       </p>
                     </div>
                   </div>
@@ -1718,9 +1720,9 @@ export default function AdminDashboard() {
         <div className="p-6 border-b border-neutral-800">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-sm">SK</span>
+              <span className="text-black font-bold text-sm">RL</span>
             </div>
-            <span className="text-xl font-semibold">Skitbit</span>
+            <span className="text-xl font-semibold">Reelix</span>
           </div>
         </div>
 
