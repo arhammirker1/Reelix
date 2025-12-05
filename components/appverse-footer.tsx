@@ -14,8 +14,8 @@ interface FooterContent {
 }
 
 const defaultContent: FooterContent = {
-  tagline: "Experience 3D animation like never before. We craft cinematic visuals for brands and products.",
-  copyright: "© 2025 — Reelix International Uk",
+  tagline: "We help SaaS startups simplify their message with high-impact explainer videos and investor-ready pitch decks.",
+  copyright: "© 2025 — Reelix Agency",
 }
 
 export function AppverseFooter() {
@@ -58,13 +58,13 @@ export function AppverseFooter() {
           <div className="relative grid items-center gap-8 md:grid-cols-2">
             {/* Left copy */}
             <div>
-              <p className="mb-2 text-[11px] tracking-widest text-lime-300">STREAMLINE YOUR LAUNCHES</p>
+              <p className="mb-2 text-[11px] tracking-widest text-lime-300">STREAMLINE YOUR VIDEO PROJECTS</p>
               <h3 className="text-2xl font-bold leading-tight text-white sm:text-3xl">
-                Preview &amp; approve high-end 3D visuals from anywhere
+                Review &amp; approve explainer videos from anywhere
               </h3>
               <p className="mt-2 max-w-prose text-sm text-neutral-400">
-                Review renders, leave timestamped comments, and approve scenes from anywhere. Using our revision &amp;
-                collaboration tools
+                Preview animations, leave timestamped feedback, and approve scenes in real-time. Our collaboration platform
+                makes video production seamless for SaaS founders and marketing teams.
               </p>
             </div>
 
@@ -80,16 +80,16 @@ export function AppverseFooter() {
                     loop={true}
                     muted={true}
                     playsInline={true}
-                    aria-label="Reelix app preview - approvals made easy"
+                    aria-label="Reelix collaboration platform - video approvals made easy"
                   />
                   {/* On-screen content */}
                   <div className="relative p-3">
                     <div className="mx-auto mb-3 h-1.5 w-16 rounded-full bg-white/20" />
                     <div className="space-y-1 px-1">
-                      <div className="text-5xl font-extrabold text-lime-300">Approvals Made Easy</div>
-                      <p className="text-xs text-white/80">From feedback to approval in a single flow</p>
+                      <div className="text-5xl font-extrabold text-lime-300">Video Approvals Simplified</div>
+                      <p className="text-xs text-white/80">From first draft to final delivery in one platform</p>
                       <div className="mt-3 inline-flex items-center rounded-full bg-black/40 px-2 py-0.5 text-[10px] uppercase tracking-wider text-lime-300">
-                        Zero Hassle
+                        Founder-Friendly
                       </div>
                     </div>
                   </div>
