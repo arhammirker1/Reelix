@@ -21,7 +21,7 @@ export function Hero() {
           </div>
           <h1 className="mt-3 text-center text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
             <span className="block">HIGH-IMPACT</span>
-            <span className="block text-lime-300 drop-shadow-[0_0_20px_rgba(132,204,22,0.35)]">3D ANIMATION</span>
+            <span className="block text-lime-300 drop-shadow-[0_0_20px_rgba(132,204,22,0.35)]">SAAS EXPLAINER VIDEOS</span>
             <span className="block">FOR BRANDS</span>
           </h1>
           <div className="mt-6">{buttonNew}</div>
@@ -45,9 +45,9 @@ export function Hero() {
 }
 
 function PhoneCard({
-  title = "8°",
-  sub = "Clear night. Great for render farm runs.",
-  tone = "calm",
+  title = "Clear",
+  sub = "Messaging that converts investors.",
+  tone = "clarity",
   gradient = "from-[#0f172a] via-[#14532d] to-[#052e16]",
   videoSrc,
 }: {
@@ -79,7 +79,7 @@ function PhoneCard({
             <div className="text-3xl font-bold leading-snug text-white/90">{title}</div>
             <p className="text-xs text-white/70">{sub}</p>
             <div className="mt-3 inline-flex items-center rounded-full bg-black/40 px-2 py-0.5 text-[10px] uppercase tracking-wider text-lime-300">
-              {tone === "calm" ? "Reelix app" : tone}
+              {tone === "calm" ? "Reelix Studio" : tone}
             </div>
           </div>
         </div>
@@ -90,36 +90,36 @@ function PhoneCard({
 
 const phoneData = [
   {
-    title: "Conversions",
-    sub: "Turn clicks into paying customers.",
-    tone: "results",
+    title: "Clarity",
+    sub: "Complex SaaS made simple.",
+    tone: "clarity",
     gradient: "from-[#0b0b0b] via-[#0f172a] to-[#020617]",
     videoSrc:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/A%20new%20chapter%20in%20the%20story%20of%20success.__Introducing%20the%20new%20TAG%20Heuer%20Carrera%20Day-Date%20collection%2C%20reimagined%20with%20bold%20colors%2C%20refined%20finishes%2C%20and%20upgraded%20functionality%20to%20keep%20you%20focused%20on%20your%20goals.%20__Six%20-nDNoRQyFaZ8oaaoty4XaQz8W8E5bqA.mp4",
   },
   {
-    title: "Speed",
-    sub: "Launch in days, not weeks.",
-    tone: "speed",
+    title: "Funding",
+    sub: "Pitch decks that close rounds.",
+    tone: "funding",
     gradient: "from-[#0b1a0b] via-[#052e16] to-[#022c22]",
   },
   {
-    title: "Social-Ready",
-    sub: "Made for IG, TikTok, and Meta.",
-    tone: "social",
+    title: "Conversions",
+    sub: "Videos that drive sign-ups.",
+    tone: "conversions",
     gradient: "from-[#001028] via-[#0b355e] to-[#052e5e]",
     videoSrc:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Timeline%201-Ku3Y2Hgaw8hCiFEFg1ELtYp631rSzR.webm",
   },
   {
-    title: "Standout",
-    sub: "Be the product no one scrolls past.",
-    tone: "standout",
+    title: "Speed",
+    sub: "Launch-ready in 5-14 days.",
+    tone: "speed",
     gradient: "from-[#0b0b0b] via-[#1f2937] to-[#0b1220]",
   },
   {
     title: "Premium",
-    sub: "Look like the market leader.",
+    sub: "Look like Series A company",
     tone: "premium",
     gradient: "from-[#0b0b0b] via-[#111827] to-[#052e16]",
   },
