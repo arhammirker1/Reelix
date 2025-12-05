@@ -8,17 +8,17 @@ export function LogoSection() {
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
           <div className="mb-6 inline-flex items-center rounded-full bg-gradient-to-r from-purple-600/20 to-purple-500/20 border border-purple-500/30 px-4 py-2 text-sm font-medium text-purple-300">
-            Our Clients
+            Trusted by Leading SaaS Brands
           </div>
 
           {/* Heading */}
           <h2 className="mb-4 bg-gradient-to-r from-purple-400 via-purple-300 to-purple-500 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl">
-            Over 100+ company
+            100+ Startups & SaaS Companies
           </h2>
 
           {/* Subtitle */}
           <p className="mb-12 max-w-2xl text-lg text-neutral-400 sm:text-xl">
-            Helping you to protect all your digital activity and data
+            We create high-converting SaaS explainer videos and investor-ready pitch decks that help founders raise capital and scale faster.
           </p>
 
           {/* Logo Grid */}
@@ -27,7 +27,7 @@ export function LogoSection() {
             <div className="hidden sm:grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {/* Row 1 */}
               <div className="col-span-2 flex items-center justify-center rounded-2xl liquid-glass px-8 py-6">
-                <span className="text-xl font-light tracking-[0.2em] text-neutral-300">NORDSTROM</span>
+                <span className="text-xl font-light tracking-[0.2em] text-neutral-300">MOTION</span>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass p-6">
                 <div className="flex h-8 w-8 items-center justify-center">
@@ -35,7 +35,7 @@ export function LogoSection() {
                 </div>
               </div>
               <div className="col-span-2 flex items-center justify-center rounded-2xl liquid-glass px-8 py-6">
-                <span className="text-xl font-light tracking-[0.3em] text-neutral-300">TESLA</span>
+                <span className="text-xl font-light tracking-[0.3em] text-neutral-300">SLACK</span>
               </div>
 
               {/* Row 2 */}
@@ -44,17 +44,17 @@ export function LogoSection() {
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass px-6 py-6">
                 <div className="rounded-full border-2 border-neutral-400 px-4 py-1">
-                  <span className="text-sm font-serif italic text-neutral-300">Ford</span>
+                  <span className="text-sm font-serif italic text-neutral-300">Intercom</span>
                 </div>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass p-6">
-                <span className="text-lg font-bold tracking-wider text-neutral-300">GAP</span>
+                <span className="text-lg font-bold tracking-wider text-neutral-300">Figma</span>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass px-6 py-6">
-                <span className="text-lg font-light tracking-wide text-neutral-300">LACOSTE</span>
+                <span className="text-lg font-light tracking-wide text-neutral-300">Airtable</span>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass px-6 py-6">
-                <span className="text-xl font-bold text-neutral-300">ca</span>
+                <span className="text-xl font-bold text-neutral-300">HubSpot</span>
               </div>
 
               {/* Row 3 */}
@@ -70,7 +70,7 @@ export function LogoSection() {
                   <div className="h-6 w-6 rounded-full border-2 border-neutral-400 flex items-center justify-center">
                     <div className="text-xs text-neutral-300">★</div>
                   </div>
-                  <span className="text-lg font-light text-neutral-300">Mercedes-Benz</span>
+                  <span className="text-lg font-light text-neutral-300">Salesforce</span>
                 </div>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass p-6">
@@ -84,7 +84,7 @@ export function LogoSection() {
             {/* Mobile Stack */}
             <div className="flex flex-col gap-4 sm:hidden">
               <div className="flex items-center justify-center rounded-2xl liquid-glass px-8 py-8">
-                <span className="text-2xl font-light tracking-[0.2em] text-neutral-300">NORDSTROM</span>
+                <span className="text-2xl font-light tracking-[0.2em] text-neutral-300">MOTION</span>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass p-8">
                 <div className="flex h-10 w-10 items-center justify-center">
@@ -92,7 +92,7 @@ export function LogoSection() {
                 </div>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass px-8 py-8">
-                <span className="text-2xl font-light tracking-[0.3em] text-neutral-300">TESLA</span>
+                <span className="text-2xl font-light tracking-[0.3em] text-neutral-300">SLACK</span>
               </div>
               <div className="flex items-center justify-center rounded-2xl liquid-glass p-8">
                 <div className="grid grid-cols-2 gap-2">
@@ -106,7 +106,7 @@ export function LogoSection() {
 
           {/* CTA Button */}
           <Button className="group rounded-full bg-gradient-to-r from-purple-600 to-purple-500 px-8 py-3 text-white shadow-lg shadow-purple-500/25 transition-all hover:shadow-xl hover:shadow-purple-500/40 hover:scale-105">
-            Try now for free
+            Get a Free Project Estimate
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>

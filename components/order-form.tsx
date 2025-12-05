@@ -79,21 +79,21 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
 
   const modelingOptions = [
     {
-      name: "Simple",
+      name: "Starter Script (1 min)",
       price_inr: orderConfig.modelingOptions.simple.price_inr,
       price_usd: orderConfig.modelingOptions.simple.price_usd,
       complexity: orderConfig.modelingOptions.simple.description,
       emoji: "🔷",
     },
     {
-      name: "Medium",
+      name: "Standard Script + Basic Storyboard",
       price_inr: orderConfig.modelingOptions.medium.price_inr,
       price_usd: orderConfig.modelingOptions.medium.price_usd,
       complexity: orderConfig.modelingOptions.medium.description,
       emoji: "🔶",
     },
     {
-      name: "Complex",
+      name: "Advanced Script + Full Storyboard",
       price_inr: orderConfig.modelingOptions.complex.price_inr,
       price_usd: orderConfig.modelingOptions.complex.price_usd,
       complexity: orderConfig.modelingOptions.complex.description,
@@ -288,7 +288,7 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h3 className="text-xl font-semibold text-white mb-2">Confirm Your Package</h3>
+                <h3 className="text-xl font-semibold text-white mb-2">Review Your Video Package</h3>
                 <p className="text-neutral-400">Let's make sure we have the right package for you</p>
               </div>
 
@@ -313,9 +313,9 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
               {/* Only show 3D model question for Pro plan */}
               {!order.package?.includes3DModeling && (
                 <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-white">Do you have a 3D model?</h4>
+                  <h4 className="text-lg font-semibold text-white">Do you already have a script for your video?</h4>
                   <p className="text-neutral-400">
-                    If you don't have a 3D model, we can create one for you at an additional cost.
+                    If you don’t have a script, we will write a high-converting one for you.
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <Button
@@ -434,12 +434,12 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h3 className="text-xl font-semibold text-white mb-2">Need 3D Renders?</h3>
+                <h3 className="text-xl font-semibold text-white mb-2">Want Additional Revision Packs?</h3>
                 <p className="text-neutral-400">High-quality still images of your 3D model</p>
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white">Do you also need 3D renders?</h4>
+                <h4 className="text-lg font-semibold text-white">Would you like extra revision rounds?</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <Button
                     variant={order.needsRenders === true ? "default" : "outline"}
