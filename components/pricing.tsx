@@ -20,14 +20,14 @@ function FeatureItem({ text, muted = false }: Feature) {
   )
 }
 
-type Currency = "INR" | "USD"
+type Currency = "PKR" | "USD"
 
 const PRICES: Record<Currency, { startup: string; pro: string; premium: string; save: string }> = {
-  INR: {
-    startup: "₹25,000/-",
-    pro: "₹55,000/-",
-    premium: "₹1,70,500/-",
-    save: "Save Flat ₹1,500/-",
+  PKR: {
+    startup: "Rs25,000/-",
+    pro: "Rs55,000/-",
+    premium: "Rs1,70,500/-",
+    save: "Save Flat Rs1,500/-",
   },
   USD: {
     startup: "$299",
@@ -40,7 +40,7 @@ const PRICES: Record<Currency, { startup: string; pro: string; premium: string; 
 function guessLocalCurrency(): Currency {
   const lang = typeof navigator !== "undefined" ? navigator.language : ""
   const tz = typeof Intl !== "undefined" ? Intl.DateTimeFormat().resolvedOptions().timeZone : ""
-  if (/-(IN|PK|BD)\b/i.test(lang) || /(Kolkata|Karachi|Dhaka)/i.test(tz || "")) return "INR"
+  if (/-(IN|PK|BD)\b/i.test(lang) || /(Kolkata|Karachi|Dhaka)/i.test(tz || "")) return "PKR"
   return "USD"
 }
 
@@ -94,7 +94,7 @@ export function Pricing() {
         const res = await fetch("/api/geo", { cache: "no-store" })
         if (!res.ok) throw new Error("geo failed")
         const data = await res.json()
-        if (!cancelled) setCurrency(data?.currency === "INR" ? "INR" : "USD")
+        if (!cancelled) setCurrency(data?.currency === "PKR" ? "PKR" : "USD")
       } catch {
         if (!cancelled) setCurrency(guessLocalCurrency())
       }
@@ -113,13 +113,13 @@ export function Pricing() {
             className="mx-auto mb-4 inline-flex items-center rounded-full px-3 py-1 text-xs font-medium"
             style={{ backgroundColor: "rgba(198,255,58,0.12)", color: ACCENT }}
           >
-            Our Pricing and Packages
+            Simple, Founder-Friendly Pricing
           </div>
           <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl" itemProp="name">
-            Our Pricing.
+            Choose Your Plan
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-neutral-400" itemProp="description">
-            No hidden fees. Just world-class animation that fits your budget.
+            No hidden fees. Just high-converting videos and pitch decks that help you raise funding and drive growth.
           </p>
           <div className="mt-6">
             <Button
@@ -186,12 +186,12 @@ export function Pricing() {
             <CardContent className="pt-0">
               <ul className="grid gap-2" itemProp="description">
                 {[
-                  "10–15s Reel/Teaser (1 SKU)",
-                  "Simple background + lighting",
+                  "Upto 45s SaaS Explainer Video",
+                  "Script Cleanup (Provided by Client)",
+                  "Basic Motion Graphics",
                   "1 revision",
-                  "Delivered in 10 days",
-                  "Social reel/ad-ready visuals",
-                  "3D Modelling - Included",
+                  "5–7 Day Delivery",
+                  "Brand Colors Integration",
                 ].map((f, i) => (
                   <FeatureItem key={i} text={f} />
                 ))}
@@ -245,12 +245,13 @@ export function Pricing() {
             <CardContent className="pt-0">
               <ul className="grid gap-2" itemProp="description">
                 {[
-                  "20–25s Animation (1 SKU)",
-                  "Fixed Shot-list (no surprises)",
-                  "Creative background + pro graphics",
-                  "2 structured revisions",
-                  "Delivered in 3 weeks",
-                  "3D Modelling - Included",
+                  "Up to 60–75s SaaS Explainer Video",
+                  "Scriptwriting Included",
+                  "Professional Voiceover",
+                  "Custom Motion Graphics",
+                  "2–3 Revisions",
+                  "10–14 Day Delivery",
+                  "SaaS UI Animations (Figma to Motion)",
                 ].map((f, i) => (
                   <FeatureItem key={i} text={f} />
                 ))}
@@ -303,12 +304,13 @@ export function Pricing() {
             <CardContent className="relative pt-0">
               <ul className="grid gap-2" itemProp="description">
                 {[
-                  "30–40s Animation (up to 5 SKUs)",
-                  "Advanced storyboard + shot design",
-                  "Delivered in 4 week",
-                  "Lighting, Camera Animation, Depth effects",
-                  "Up to 3 structured revisions",
-                  "3D Modelling - Included",
+                  "Complete Startup Package (Video + Pitch Deck)",
+                  "90s Premium Explainer Video",
+                  "VC-Ready Pitch Deck (15–18 Slides)",
+                  "Advanced Illustrations + UI Animations",
+                  "Unlimited Minor Revisions",
+                  "Priority Delivery (7–10 Days)",
+                  "Investor Positioning & Story Framework",
                 ].map((f, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4" style={{ color: ACCENT }} />
