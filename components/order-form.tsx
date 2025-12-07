@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { X, ArrowLeft, ArrowRight, Check, Package, Palette, ImageIcon } from "lucide-react"
+import { X, ArrowLeft, ArrowRight, Check, Package, FileText, Sparkles } from "lucide-react"
 import Image from "next/image"
 
 interface OrderFormProps {
@@ -14,7 +14,7 @@ interface OrderFormProps {
     name: string
     price: string
     priceValue: number
-    includes3DModeling: boolean
+    includesScriptwriting: boolean
   } | null
 }
 
@@ -23,22 +23,22 @@ interface OrderState {
     name: string
     price: string
     priceValue: number
-    includes3DModeling: boolean
+    includesScriptwriting: boolean
   } | null
-  has3DModel: boolean | null
-  modelingAddOn: {
+  hasScript: boolean | null
+  scriptAddOn: {
     name: string
     price_inr: number
     price_usd: number
     complexity: string
     emoji: string
   } | null
-  needsRenders: boolean | null
-  renderPackage: {
+  needsPitchDeck: boolean | null
+  pitchDeckPackage: {
     name: string
     price_inr: number
     price_usd: number
-    quantity: number
+    slides: number
     emoji: string
   } | null
 }
@@ -47,23 +47,23 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
   const [currentStep, setCurrentStep] = useState(1)
   const [order, setOrder] = useState<OrderState>({
     package: null,
-    has3DModel: null,
-    modelingAddOn: null,
-    needsRenders: null,
-    renderPackage: null,
+    hasScript: null,
+    scriptAddOn: null,
+    needsPitchDeck: null,
+    pitchDeckPackage: null,
   })
 
   const [orderConfig, setOrderConfig] = useState({
     whatsappNumber: "+918384092211",
-    modelingOptions: {
-      simple: { price_usd: 35, price_inr: 3000, description: "Basic shapes, minimal details" },
-      medium: { price_usd: 60, price_inr: 5000, description: "Moderate details, textures" },
-      complex: { price_usd: 120, price_inr: 10000, description: "High detail, advanced geometry" },
+    scriptOptions: {
+      simple: { price_usd: 150, price_inr: 12000, description: "Basic script up to 60s" },
+      medium: { price_usd: 250, price_inr: 20000, description: "Professional script with revisions" },
+      complex: { price_usd: 400, price_inr: 32000, description: "Advanced script + storyboard" },
     },
-    renderOptions: {
-      basic: { price_usd: 25, price_inr: 2000, quantity: 3 },
-      standard: { price_usd: 35, price_inr: 3000, quantity: 5 },
-      premium: { price_usd: 60, price_inr: 5000, quantity: 10 },
+    pitchDeckOptions: {
+      basic: { price_usd: 300, price_inr: 25000, slides: 10 },
+      standard: { price_usd: 500, price_inr: 40000, slides: 15 },
+      premium: { price_usd: 800, price_inr: 65000, slides: 20 },
     },
   })
 
@@ -77,51 +77,51 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
     }
   }, [])
 
-  const modelingOptions = [
+  const scriptOptions = [
     {
-      name: "Starter Script (1 min)",
-      price_inr: orderConfig.modelingOptions.simple.price_inr,
-      price_usd: orderConfig.modelingOptions.simple.price_usd,
-      complexity: orderConfig.modelingOptions.simple.description,
-      emoji: "🔷",
+      name: "Starter Script (up to 45s)",
+      price_inr: orderConfig.scriptOptions.simple.price_inr,
+      price_usd: orderConfig.scriptOptions.simple.price_usd,
+      complexity: orderConfig.scriptOptions.simple.description,
+      emoji: "📝",
     },
     {
-      name: "Standard Script + Basic Storyboard",
-      price_inr: orderConfig.modelingOptions.medium.price_inr,
-      price_usd: orderConfig.modelingOptions.medium.price_usd,
-      complexity: orderConfig.modelingOptions.medium.description,
-      emoji: "🔶",
+      name: "Professional Script (up to 60s)",
+      price_inr: orderConfig.scriptOptions.medium.price_inr,
+      price_usd: orderConfig.scriptOptions.medium.price_usd,
+      complexity: orderConfig.scriptOptions.medium.description,
+      emoji: "✍️",
     },
     {
-      name: "Advanced Script + Full Storyboard",
-      price_inr: orderConfig.modelingOptions.complex.price_inr,
-      price_usd: orderConfig.modelingOptions.complex.price_usd,
-      complexity: orderConfig.modelingOptions.complex.description,
-      emoji: "💎",
+      name: "Premium Script + Storyboard (90s)",
+      price_inr: orderConfig.scriptOptions.complex.price_inr,
+      price_usd: orderConfig.scriptOptions.complex.price_usd,
+      complexity: orderConfig.scriptOptions.complex.description,
+      emoji: "🎬",
     },
   ]
 
-  const renderOptions = [
+  const pitchDeckOptions = [
     {
-      name: "Basic Pack",
-      quantity: orderConfig.renderOptions.basic.quantity,
-      price_inr: orderConfig.renderOptions.basic.price_inr,
-      price_usd: orderConfig.renderOptions.basic.price_usd,
-      emoji: "📸",
+      name: "Basic Deck",
+      slides: orderConfig.pitchDeckOptions.basic.slides,
+      price_inr: orderConfig.pitchDeckOptions.basic.price_inr,
+      price_usd: orderConfig.pitchDeckOptions.basic.price_usd,
+      emoji: "📊",
     },
     {
-      name: "Standard Pack",
-      quantity: orderConfig.renderOptions.standard.quantity,
-      price_inr: orderConfig.renderOptions.standard.price_inr,
-      price_usd: orderConfig.renderOptions.standard.price_usd,
-      emoji: "📷",
+      name: "Standard Deck",
+      slides: orderConfig.pitchDeckOptions.standard.slides,
+      price_inr: orderConfig.pitchDeckOptions.standard.price_inr,
+      price_usd: orderConfig.pitchDeckOptions.standard.price_usd,
+      emoji: "📈",
     },
     {
-      name: "Premium Pack",
-      quantity: orderConfig.renderOptions.premium.quantity,
-      price_inr: orderConfig.renderOptions.premium.price_inr,
-      price_usd: orderConfig.renderOptions.premium.price_usd,
-      emoji: "🎥",
+      name: "VC-Ready Deck",
+      slides: orderConfig.pitchDeckOptions.premium.slides,
+      price_inr: orderConfig.pitchDeckOptions.premium.price_inr,
+      price_usd: orderConfig.pitchDeckOptions.premium.price_usd,
+      emoji: "🚀",
     },
   ]
 
@@ -130,10 +130,10 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
     if (isOpen && selectedPackage) {
       setOrder({
         package: selectedPackage,
-        has3DModel: null,
-        modelingAddOn: null,
-        needsRenders: null,
-        renderPackage: null,
+        hasScript: null,
+        scriptAddOn: null,
+        needsPitchDeck: null,
+        pitchDeckPackage: null,
       })
       setCurrentStep(1)
     }
@@ -141,8 +141,8 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
 
   const calculateTotal = () => {
     let total = order.package?.priceValue || 0
-    if (order.modelingAddOn) total += order.modelingAddOn.price_inr
-    if (order.renderPackage) total += order.renderPackage.price_inr
+    if (order.scriptAddOn) total += order.scriptAddOn.price_inr
+    if (order.pitchDeckPackage) total += order.pitchDeckPackage.price_inr
     return total
   }
 
@@ -152,15 +152,15 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
 
   const handleNext = () => {
     if (currentStep === 1) {
-      // If package includes 3D modeling (Startup or Premium), skip to render upsell
-      if (order.package?.includes3DModeling) {
+      // If package includes scriptwriting (Pro or Premium), skip to pitch deck upsell
+      if (order.package?.includesScriptwriting) {
         setCurrentStep(3)
       } else {
-        // For Pro plan, check if user has 3D model
-        if (order.has3DModel) {
-          setCurrentStep(3) // Skip modeling selection
+        // For Startup plan, check if user has script
+        if (order.hasScript) {
+          setCurrentStep(3) // Skip script selection
         } else {
-          setCurrentStep(2) // Go to modeling selection
+          setCurrentStep(2) // Go to script selection
         }
       }
     } else if (currentStep === 2) {
@@ -173,7 +173,7 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
   const handleBack = () => {
     if (currentStep === 3) {
       // If we skipped step 2, go back to step 1
-      if (order.package?.includes3DModeling || order.has3DModel) {
+      if (order.package?.includesScriptwriting || order.hasScript) {
         setCurrentStep(1)
       } else {
         setCurrentStep(2)
@@ -184,19 +184,19 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
   }
 
   const generateWhatsAppMessage = () => {
-    let message = `Hi, I would like to order:\n\n`
-    message += `📦 Package: ${order.package?.name} - ${order.package?.price}\n`
+    let message = `Hi! I'd like to order from Reelix:\n\n`
+    message += `🎬 Package: ${order.package?.name} Plan - ${order.package?.price}\n`
 
-    if (order.modelingAddOn) {
-      message += `🎨 3D Modeling: ${order.modelingAddOn.name} - ₹${order.modelingAddOn.price_inr}\n`
+    if (order.scriptAddOn) {
+      message += `📝 Scriptwriting: ${order.scriptAddOn.name} - ₹${order.scriptAddOn.price_inr}\n`
     }
 
-    if (order.renderPackage) {
-      message += `🖼️ Renders: ${order.renderPackage.name} (${order.renderPackage.quantity} renders) - ₹${order.renderPackage.price_inr}\n`
+    if (order.pitchDeckPackage) {
+      message += `📊 Pitch Deck: ${order.pitchDeckPackage.name} (${order.pitchDeckPackage.slides} slides) - ₹${order.pitchDeckPackage.price_inr}\n`
     }
 
-    message += `\n💰 Total: ${formatPrice(calculateTotal())}\n\n`
-    message += `Please confirm the details and let me know the next steps.`
+    message += `\n💰 Total Investment: ${formatPrice(calculateTotal())}\n\n`
+    message += `Please confirm the details and share the next steps to get started!`
 
     return encodeURIComponent(message)
   }
@@ -210,18 +210,18 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
 
   const isNextDisabled = () => {
     if (currentStep === 1) {
-      // For packages that don't include 3D modeling, user must answer the 3D model question
-      if (!order.package?.includes3DModeling && order.has3DModel === null) {
+      // For packages that don't include scriptwriting, user must answer the script question
+      if (!order.package?.includesScriptwriting && order.hasScript === null) {
         return true
       }
       return false
     }
     if (currentStep === 2) {
-      return !order.modelingAddOn
+      return !order.scriptAddOn
     }
     if (currentStep === 3) {
-      if (order.needsRenders === null) return true
-      if (order.needsRenders && !order.renderPackage) return true
+      if (order.needsPitchDeck === null) return true
+      if (order.needsPitchDeck && !order.pitchDeckPackage) return true
       return false
     }
     return false
@@ -239,7 +239,7 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
               <Package className="h-4 w-4 text-[#C6FF3A]" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-white">Order Configuration</h2>
+              <h2 className="text-lg font-semibold text-white">Customize Your Order</h2>
               <p className="text-sm text-neutral-400">Step {currentStep} of 4</p>
             </div>
           </div>
@@ -288,8 +288,8 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h3 className="text-xl font-semibold text-white mb-2">Review Your Video Package</h3>
-                <p className="text-neutral-400">Let's make sure we have the right package for you</p>
+                <h3 className="text-xl font-semibold text-white mb-2">Review Your Package</h3>
+                <p className="text-neutral-400">Perfect! Let's customize your explainer video package</p>
               </div>
 
               <Card className="glass-border-subtle border-neutral-800 bg-neutral-900/50">
@@ -298,9 +298,9 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
                     <div>
                       <h4 className="text-lg font-semibold text-white">{order.package?.name} Plan</h4>
                       <p className="text-neutral-400">
-                        {order.package?.includes3DModeling
-                          ? "Professional 3D animation package with modeling included"
-                          : "Professional 3D animation package"}
+                        {order.package?.includesScriptwriting
+                          ? "Includes professional scriptwriting & voiceover"
+                          : "Video production with your script"}
                       </p>
                     </div>
                     <div className="text-right">
@@ -310,19 +310,19 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
                 </CardContent>
               </Card>
 
-              {/* Only show 3D model question for Pro plan */}
-              {!order.package?.includes3DModeling && (
+              {/* Only show script question for Startup plan */}
+              {!order.package?.includesScriptwriting && (
                 <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-white">Do you already have a script for your video?</h4>
+                  <h4 className="text-lg font-semibold text-white">Do you already have a video script?</h4>
                   <p className="text-neutral-400">
-                    If you don’t have a script, we will write a high-converting one for you.
+                    If not, our team can write a high-converting script tailored to your SaaS product.
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <Button
-                      variant={order.has3DModel === true ? "default" : "outline"}
-                      onClick={() => setOrder({ ...order, has3DModel: true })}
+                      variant={order.hasScript === true ? "default" : "outline"}
+                      onClick={() => setOrder({ ...order, hasScript: true })}
                       className={`h-16 ${
-                        order.has3DModel === true
+                        order.hasScript === true
                           ? "bg-[#C6FF3A] text-black hover:bg-[#C6FF3A]/90"
                           : "border-neutral-700 text-neutral-300 hover:bg-neutral-800"
                       }`}
@@ -333,37 +333,37 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
                       </div>
                     </Button>
                     <Button
-                      variant={order.has3DModel === false ? "default" : "outline"}
-                      onClick={() => setOrder({ ...order, has3DModel: false })}
+                      variant={order.hasScript === false ? "default" : "outline"}
+                      onClick={() => setOrder({ ...order, hasScript: false })}
                       className={`h-16 ${
-                        order.has3DModel === false
+                        order.hasScript === false
                           ? "bg-[#C6FF3A] text-black hover:bg-[#C6FF3A]/90"
                           : "border-neutral-700 text-neutral-300 hover:bg-neutral-800"
                       }`}
                     >
                       <div className="text-center">
-                        <Palette className="h-5 w-5 mx-auto mb-1" />
-                        <div className="font-medium">No, create one</div>
+                        <FileText className="h-5 w-5 mx-auto mb-1" />
+                        <div className="font-medium">No, write one for me</div>
                       </div>
                     </Button>
                   </div>
                 </div>
               )}
 
-              {/* For Startup/Premium plans, show what's included */}
-              {order.package?.includes3DModeling && (
+              {/* For Pro/Premium plans, show what's included */}
+              {order.package?.includesScriptwriting && (
                 <div className="space-y-4">
                   <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                     <div className="flex items-center gap-3">
                       <Check className="h-5 w-5 text-green-400" />
                       <div>
                         <h4 className="text-green-300 font-semibold">
-                          {order.package.name === "Startup"
-                            ? "Simple 3D Modeling Included"
-                            : "Complex 3D Modeling Included"}
+                          {order.package.name === "Pro"
+                            ? "Professional Scriptwriting Included"
+                            : "Premium Scriptwriting + Storyboard Included"}
                         </h4>
                         <p className="text-green-200 text-sm">
-                          Your package includes professional 3D modeling - no additional cost!
+                          Our team will craft a compelling script that converts - no additional cost!
                         </p>
                       </div>
                     </div>
@@ -373,27 +373,27 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
             </div>
           )}
 
-          {/* Step 2: 3D Modeling Add-on */}
+          {/* Step 2: Scriptwriting Add-on */}
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h3 className="text-xl font-semibold text-white mb-2">Choose 3D Modeling Complexity</h3>
-                <p className="text-neutral-400">Select the complexity level that matches your product</p>
+                <h3 className="text-xl font-semibold text-white mb-2">Choose Scriptwriting Service</h3>
+                <p className="text-neutral-400">Select the script package that fits your needs</p>
               </div>
 
               <div className="grid gap-4">
-                {modelingOptions.map((option) => (
+                {scriptOptions.map((option) => (
                   <Card
                     key={option.name}
                     className={`cursor-pointer transition-all hover:scale-[1.02] ${
-                      order.modelingAddOn?.name === option.name
+                      order.scriptAddOn?.name === option.name
                         ? "glass-border-enhanced bg-[#C6FF3A]/10"
                         : "glass-border bg-neutral-900/50 hover:glass-border-enhanced"
                     }`}
                     onClick={() =>
                       setOrder({
                         ...order,
-                        modelingAddOn: {
+                        scriptAddOn: {
                           name: option.name,
                           price_inr: option.price_inr,
                           price_usd: option.price_usd,
@@ -405,14 +405,8 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-neutral-800 rounded-lg flex items-center justify-center">
-                          <Image
-                            src={`/placeholder-120x120.png?height=120&width=120&text=${option.name}+3D`}
-                            alt={option.name}
-                            width={48}
-                            height={48}
-                            className="rounded"
-                          />
+                        <div className="w-16 h-16 bg-neutral-800 rounded-lg flex items-center justify-center text-3xl">
+                          {option.emoji}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-1">
@@ -421,7 +415,7 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
                           </div>
                           <p className="text-sm text-neutral-400">{option.complexity}</p>
                         </div>
-                        {order.modelingAddOn?.name === option.name && <Check className="h-5 w-5 text-[#C6FF3A]" />}
+                        {order.scriptAddOn?.name === option.name && <Check className="h-5 w-5 text-[#C6FF3A]" />}
                       </div>
                     </CardContent>
                   </Card>
@@ -430,68 +424,68 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
             </div>
           )}
 
-          {/* Step 3: Render Upsell */}
+          {/* Step 3: Pitch Deck Upsell */}
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h3 className="text-xl font-semibold text-white mb-2">Want Additional Revision Packs?</h3>
-                <p className="text-neutral-400">High-quality still images of your 3D model</p>
+                <h3 className="text-xl font-semibold text-white mb-2">Add an Investor Pitch Deck?</h3>
+                <p className="text-neutral-400">Perfect complement to your explainer video for fundraising</p>
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white">Would you like extra revision rounds?</h4>
+                <h4 className="text-lg font-semibold text-white">Would you like a pitch deck designed?</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <Button
-                    variant={order.needsRenders === true ? "default" : "outline"}
-                    onClick={() => setOrder({ ...order, needsRenders: true })}
+                    variant={order.needsPitchDeck === true ? "default" : "outline"}
+                    onClick={() => setOrder({ ...order, needsPitchDeck: true })}
                     className={`h-16 ${
-                      order.needsRenders === true
+                      order.needsPitchDeck === true
                         ? "bg-[#C6FF3A] text-black hover:bg-[#C6FF3A]/90"
                         : "border-neutral-700 text-neutral-300 hover:bg-neutral-800"
                     }`}
                   >
                     <div className="text-center">
-                      <ImageIcon className="h-5 w-5 mx-auto mb-1" />
-                      <div className="font-medium">Yes, add renders</div>
+                      <Sparkles className="h-5 w-5 mx-auto mb-1" />
+                      <div className="font-medium">Yes, add pitch deck</div>
                     </div>
                   </Button>
                   <Button
-                    variant={order.needsRenders === false ? "default" : "outline"}
-                    onClick={() => setOrder({ ...order, needsRenders: false, renderPackage: null })}
+                    variant={order.needsPitchDeck === false ? "default" : "outline"}
+                    onClick={() => setOrder({ ...order, needsPitchDeck: false, pitchDeckPackage: null })}
                     className={`h-16 ${
-                      order.needsRenders === false
+                      order.needsPitchDeck === false
                         ? "bg-[#C6FF3A] text-black hover:bg-[#C6FF3A]/90"
                         : "border-neutral-700 text-neutral-300 hover:bg-neutral-800"
                     }`}
                   >
                     <div className="text-center">
                       <X className="h-5 w-5 mx-auto mb-1" />
-                      <div className="font-medium">No, skip renders</div>
+                      <div className="font-medium">No, just the video</div>
                     </div>
                   </Button>
                 </div>
               </div>
 
-              {order.needsRenders && (
+              {order.needsPitchDeck && (
                 <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-white">Choose Render Package</h4>
+                  <h4 className="text-lg font-semibold text-white">Choose Pitch Deck Package</h4>
                   <div className="grid gap-3">
-                    {renderOptions.map((option) => (
+                    {pitchDeckOptions.map((option) => (
                       <Card
                         key={option.name}
                         className={`cursor-pointer transition-all hover:scale-[1.02] ${
-                          order.renderPackage?.name === option.name
+                          order.pitchDeckPackage?.name === option.name
                             ? "glass-border-enhanced bg-[#C6FF3A]/10"
                             : "glass-border bg-neutral-900/50 hover:glass-border-enhanced"
                         }`}
                         onClick={() =>
                           setOrder({
                             ...order,
-                            renderPackage: {
+                            pitchDeckPackage: {
                               name: option.name,
                               price_inr: option.price_inr,
                               price_usd: option.price_usd,
-                              quantity: option.quantity,
+                              slides: option.slides,
                               emoji: option.emoji,
                             },
                           })
@@ -500,14 +494,17 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
                         <CardContent className="p-4">
                           <div className="flex items-center justify-between">
                             <div>
-                              <h5 className="font-semibold text-white">{option.name}</h5>
-                              <p className="text-sm text-neutral-400">{option.quantity} high-quality renders</p>
+                              <h5 className="font-semibold text-white flex items-center gap-2">
+                                <span className="text-2xl">{option.emoji}</span>
+                                {option.name}
+                              </h5>
+                              <p className="text-sm text-neutral-400">{option.slides} professionally designed slides</p>
                             </div>
                             <div className="text-right">
                               <span className="text-[#C6FF3A] font-semibold">
                                 +₹{option.price_inr.toLocaleString()}
                               </span>
-                              {order.renderPackage?.name === option.name && (
+                              {order.pitchDeckPackage?.name === option.name && (
                                 <Check className="h-4 w-4 text-[#C6FF3A] ml-2 inline" />
                               )}
                             </div>
@@ -526,48 +523,48 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
             <div className="space-y-6">
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-white mb-2">Order Summary</h3>
-                <p className="text-neutral-400">Review your selections before confirming</p>
+                <p className="text-neutral-400">Review your package before we get started</p>
               </div>
 
               <Card className="glass-border-subtle border-neutral-800 bg-neutral-900/50">
                 <CardHeader>
-                  <CardTitle className="text-white">Your Order</CardTitle>
+                  <CardTitle className="text-white">Your Complete Package</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b border-neutral-800">
                     <div>
                       <h4 className="font-medium text-white">{order.package?.name} Plan</h4>
-                      <p className="text-sm text-neutral-400">3D Animation Package</p>
+                      <p className="text-sm text-neutral-400">SaaS Explainer Video</p>
                     </div>
                     <span className="font-semibold text-white">{order.package?.price}</span>
                   </div>
 
-                  {order.modelingAddOn && (
+                  {order.scriptAddOn && (
                     <div className="flex justify-between items-center py-2 border-b border-neutral-800">
                       <div>
-                        <h4 className="font-medium text-white">3D Modeling - {order.modelingAddOn.name}</h4>
-                        <p className="text-sm text-neutral-400">{order.modelingAddOn.complexity}</p>
+                        <h4 className="font-medium text-white">Scriptwriting - {order.scriptAddOn.name}</h4>
+                        <p className="text-sm text-neutral-400">{order.scriptAddOn.complexity}</p>
                       </div>
                       <span className="font-semibold text-white">
-                        +₹{order.modelingAddOn.price_inr.toLocaleString()}
+                        +₹{order.scriptAddOn.price_inr.toLocaleString()}
                       </span>
                     </div>
                   )}
 
-                  {order.renderPackage && (
+                  {order.pitchDeckPackage && (
                     <div className="flex justify-between items-center py-2 border-b border-neutral-800">
                       <div>
-                        <h4 className="font-medium text-white">{order.renderPackage.name}</h4>
-                        <p className="text-sm text-neutral-400">{order.renderPackage.quantity} renders</p>
+                        <h4 className="font-medium text-white">{order.pitchDeckPackage.name}</h4>
+                        <p className="text-sm text-neutral-400">{order.pitchDeckPackage.slides} investor-ready slides</p>
                       </div>
                       <span className="font-semibold text-white">
-                        +₹{order.renderPackage.price_inr.toLocaleString()}
+                        +₹{order.pitchDeckPackage.price_inr.toLocaleString()}
                       </span>
                     </div>
                   )}
 
                   <div className="flex justify-between items-center py-3 bg-[#C6FF3A]/10 rounded-lg px-4">
-                    <h4 className="text-lg font-bold text-white">Total</h4>
+                    <h4 className="text-lg font-bold text-white">Total Investment</h4>
                     <span className="text-2xl font-bold text-[#C6FF3A]">{formatPrice(calculateTotal())}</span>
                   </div>
                 </CardContent>
@@ -597,12 +594,12 @@ export function OrderForm({ isOpen, onClose, selectedPackage }: OrderFormProps) 
                   : "bg-[#C6FF3A] text-black hover:bg-[#C6FF3A]/90"
               }`}
             >
-              Next Step
+              Continue
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           ) : (
             <Button onClick={handleConfirmOrder} className="bg-[#C6FF3A] text-black hover:bg-[#C6FF3A]/90">
-              Confirm & Send via WhatsApp
+              Send Order via WhatsApp
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           )}
