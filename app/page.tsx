@@ -67,7 +67,7 @@ export default function Page() {
       sameAs: [
         "https://twitter.com/reelixstudio",
         "https://www.youtube.com/@reelixstudio",
-        "https://instagram.com/reelixagency",
+        "https://instagram.com/reelix_studios",
         "https://linkedin.com/company/reelix",
       ],
     },
