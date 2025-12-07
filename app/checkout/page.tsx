@@ -11,19 +11,19 @@ interface OrderState {
     name: string
     price: string
     priceValue: number
-    includes3DModeling: boolean
+    includesScriptwriting: boolean
   } | null
-  has3DModel: boolean | null
-  modelingAddOn: {
+  hasScript: boolean | null
+  scriptAddOn: {
     name: string
     price: number
     complexity: string
   } | null
-  needsRenders: boolean | null
-  renderPackage: {
+  needsPitchDeck: boolean | null
+  pitchDeckPackage: {
     name: string
     price: number
-    quantity: number
+    slides: number
   } | null
 }
 
@@ -57,24 +57,24 @@ export default function CheckoutPage() {
   const [currency, setCurrency] = useState<Currency>("USD")
   const [order, setOrder] = useState<OrderState>({
     package: null,
-    has3DModel: null,
-    modelingAddOn: null,
-    needsRenders: null,
-    renderPackage: null,
+    hasScript: null,
+    scriptAddOn: null,
+    needsPitchDeck: null,
+    pitchDeckPackage: null,
   })
 
   // Add state for order configuration
   const [orderConfig, setOrderConfig] = useState({
     whatsappNumber: "+918384092211",
-    modelingOptions: {
-      simple: { price_usd: 35, price_inr: 3000, description: "Basic shapes, minimal details" },
-      medium: { price_usd: 60, price_inr: 5000, description: "Moderate details, textures" },
-      complex: { price_usd: 120, price_inr: 10000, description: "High detail, advanced geometry" },
+    scriptOptions: {
+      simple: { price_usd: 150, price_inr: 12000, description: "Basic script up to 60s" },
+      medium: { price_usd: 250, price_inr: 20000, description: "Professional script with revisions" },
+      complex: { price_usd: 400, price_inr: 32000, description: "Advanced script + storyboard" },
     },
-    renderOptions: {
-      basic: { price_usd: 25, price_inr: 2000, quantity: 3 },
-      standard: { price_usd: 35, price_inr: 3000, quantity: 5 },
-      premium: { price_usd: 60, price_inr: 5000, quantity: 10 },
+    pitchDeckOptions: {
+      basic: { price_usd: 300, price_inr: 25000, slides: 10 },
+      standard: { price_usd: 500, price_inr: 40000, slides: 15 },
+      premium: { price_usd: 800, price_inr: 65000, slides: 20 },
     },
   })
 
@@ -121,22 +121,22 @@ export default function CheckoutPage() {
         name: planName,
         price: currency === "INR" ? PRICES[planKey].inr : PRICES[planKey].usd,
         priceValue: currency === "INR" ? PRICE_VALUES[planKey].inr : PRICE_VALUES[planKey].usd,
-        includes3DModeling: planKey === "premium" || planKey === "startup", // Both Premium and Startup include modeling
+        includesScriptwriting: planKey === "premium" || planKey === "pro", // Pro and Premium include scriptwriting
       }
 
       setOrder({
         package: packageData,
-        has3DModel: null,
-        modelingAddOn: null,
-        needsRenders: null,
-        renderPackage: null,
+        hasScript: null,
+        scriptAddOn: null,
+        needsPitchDeck: null,
+        pitchDeckPackage: null,
       })
 
       // Calculate total steps based on package
-      if (packageData.includes3DModeling) {
-        setTotalSteps(3) // Skip 3D modeling question and selection for Startup and Premium
+      if (packageData.includesScriptwriting) {
+        setTotalSteps(3) // Skip script question and selection for Pro and Premium
       } else {
-        setTotalSteps(4) // Pro plan goes through all steps
+        setTotalSteps(4) // Startup plan goes through all steps
       }
 
       setIsInitialized(true)
@@ -147,8 +147,8 @@ export default function CheckoutPage() {
 
   const calculateTotal = () => {
     let total = order.package?.priceValue || 0
-    if (order.modelingAddOn) total += order.modelingAddOn.price
-    if (order.renderPackage) total += order.renderPackage.price
+    if (order.scriptAddOn) total += order.scriptAddOn.price
+    if (order.pitchDeckPackage) total += order.pitchDeckPackage.price
     return total
   }
 
@@ -162,22 +162,22 @@ export default function CheckoutPage() {
 
   const handleNext = () => {
     if (currentStep === 1) {
-      // For Startup/Premium (includes 3D modeling), go straight to renders
-      if (order.package?.includes3DModeling) {
-        setCurrentStep(2) // Go to renders question
+      // For Pro/Premium (includes scriptwriting), go straight to pitch deck
+      if (order.package?.includesScriptwriting) {
+        setCurrentStep(2) // Go to pitch deck question
       } else {
-        // For Pro plan, check if user has 3D model
-        if (order.has3DModel === false) {
-          setCurrentStep(2) // Go to modeling selection
-        } else if (order.has3DModel === true) {
-          setCurrentStep(3) // Skip modeling, go to renders question
+        // For Startup plan, check if user has script
+        if (order.hasScript === false) {
+          setCurrentStep(2) // Go to script selection
+        } else if (order.hasScript === true) {
+          setCurrentStep(3) // Skip script, go to pitch deck question
         }
       }
     } else if (currentStep === 2) {
-      if (order.package?.includes3DModeling) {
-        setCurrentStep(3) // Summary for Startup/Premium
+      if (order.package?.includesScriptwriting) {
+        setCurrentStep(3) // Summary for Pro/Premium
       } else {
-        setCurrentStep(3) // Go to renders question for Pro
+        setCurrentStep(3) // Go to pitch deck question for Startup
       }
     } else if (currentStep === 3) {
       setCurrentStep(4) // Summary
@@ -193,15 +193,15 @@ export default function CheckoutPage() {
     if (currentStep === 2) {
       setCurrentStep(1) // Always go back to step 1
     } else if (currentStep === 3) {
-      // If we're on renders/summary step for plans with included modeling, go back to step 1
-      if (order.package?.includes3DModeling) {
+      // If we're on pitch deck/summary step for plans with included scriptwriting, go back to step 1
+      if (order.package?.includesScriptwriting) {
         setCurrentStep(1)
       } else {
-        // For Pro plan, check if we came from modeling selection
-        if (order.has3DModel === false) {
-          setCurrentStep(2) // Go back to modeling selection
+        // For Startup plan, check if we came from script selection
+        if (order.hasScript === false) {
+          setCurrentStep(2) // Go back to script selection
         } else {
-          setCurrentStep(1) // Go back to 3D model question
+          setCurrentStep(1) // Go back to script question
         }
       }
     } else {
@@ -210,22 +210,22 @@ export default function CheckoutPage() {
   }
 
   const generateWhatsAppMessage = () => {
-    let message = `Hi, I would like to order:\n\n`
-    message += `📦 Package: ${order.package?.name} - ${order.package?.price}\n`
+    let message = `Hi! I'd like to order from Reelix:\n\n`
+    message += `🎬 Package: ${order.package?.name} Plan - ${order.package?.price}\n`
 
-    if (order.modelingAddOn) {
-      const modelingPrice = formatPrice(order.modelingAddOn.price)
-      message += `🎨 3D Modeling: ${order.modelingAddOn.name} - ${modelingPrice}\n`
+    if (order.scriptAddOn) {
+      const scriptPrice = formatPrice(order.scriptAddOn.price)
+      message += `📝 Scriptwriting: ${order.scriptAddOn.name} - ${scriptPrice}\n`
     }
 
-    if (order.renderPackage) {
-      const renderPrice = formatPrice(order.renderPackage.price)
-      message += `🖼️ Renders: ${order.renderPackage.name} (${order.renderPackage.quantity} renders) - ${renderPrice}\n`
+    if (order.pitchDeckPackage) {
+      const deckPrice = formatPrice(order.pitchDeckPackage.price)
+      message += `📊 Pitch Deck: ${order.pitchDeckPackage.name} (${order.pitchDeckPackage.slides} slides) - ${deckPrice}\n`
     }
 
-    message += `\n💰 Total: ${formatPrice(calculateTotal())}\n\n`
+    message += `\n💰 Total Investment: ${formatPrice(calculateTotal())}\n\n`
     message += `Currency: ${currency}\n` // Debug line to verify currency
-    message += `Please confirm the details and let me know the next steps.`
+    message += `Please confirm the details and share the next steps to get started!`
 
     return encodeURIComponent(message)
   }
@@ -253,27 +253,27 @@ export default function CheckoutPage() {
   }
 
   const getStepContent = () => {
-    // Step 1: 3D Model Question (only for Pro plan)
-    if (currentStep === 1 && !order.package?.includes3DModeling) {
+    // Step 1: Script Question (only for Startup plan)
+    if (currentStep === 1 && !order.package?.includesScriptwriting) {
       return {
-        title: "Do you have a 3D model?",
-        subtitle: "We need to know if you already have a 3D model or if we should create one for you.",
+        title: "Do you have a video script?",
+        subtitle: "We need to know if you already have a script or if we should write one for you.",
         options: [
           {
             id: "yes",
             title: "Yes, I have one",
             emoji: "✅",
             action: () => {
-              updateOrder({ has3DModel: true })
+              updateOrder({ hasScript: true })
               setTimeout(handleNext, 300)
             },
           },
           {
             id: "no",
-            title: "No, create one for me",
-            emoji: "🎨",
+            title: "No, write one for me",
+            emoji: "📝",
             action: () => {
-              updateOrder({ has3DModel: false })
+              updateOrder({ hasScript: false })
               setTimeout(handleNext, 300)
             },
           },
@@ -281,32 +281,32 @@ export default function CheckoutPage() {
       }
     }
 
-    // Step 2: 3D Modeling Selection (only for Pro plan if user doesn't have model)
-    if (currentStep === 2 && !order.package?.includes3DModeling && !order.has3DModel) {
+    // Step 2: Scriptwriting Selection (only for Startup plan if user doesn't have script)
+    if (currentStep === 2 && !order.package?.includesScriptwriting && !order.hasScript) {
       return {
-        title: "Choose modeling complexity",
-        subtitle: "Select the level that matches your product requirements.",
+        title: "Choose scriptwriting service",
+        subtitle: "Select the script package that matches your needs.",
         options: [
           {
-            name: "Simple",
-            price_inr: orderConfig.modelingOptions.simple.price_inr,
-            price_usd: orderConfig.modelingOptions.simple.price_usd,
-            complexity: orderConfig.modelingOptions.simple.description,
-            emoji: "🔷",
+            name: "Starter Script",
+            price_inr: orderConfig.scriptOptions.simple.price_inr,
+            price_usd: orderConfig.scriptOptions.simple.price_usd,
+            complexity: orderConfig.scriptOptions.simple.description,
+            emoji: "📝",
           },
           {
-            name: "Medium",
-            price_inr: orderConfig.modelingOptions.medium.price_inr,
-            price_usd: orderConfig.modelingOptions.medium.price_usd,
-            complexity: orderConfig.modelingOptions.medium.description,
-            emoji: "🔶",
+            name: "Professional Script",
+            price_inr: orderConfig.scriptOptions.medium.price_inr,
+            price_usd: orderConfig.scriptOptions.medium.price_usd,
+            complexity: orderConfig.scriptOptions.medium.description,
+            emoji: "✍️",
           },
           {
-            name: "Complex",
-            price_inr: orderConfig.modelingOptions.complex.price_inr,
-            price_usd: orderConfig.modelingOptions.complex.price_usd,
-            complexity: orderConfig.modelingOptions.complex.description,
-            emoji: "💎",
+            name: "Premium Script + Storyboard",
+            price_inr: orderConfig.scriptOptions.complex.price_inr,
+            price_usd: orderConfig.scriptOptions.complex.price_usd,
+            complexity: orderConfig.scriptOptions.complex.description,
+            emoji: "🎬",
           },
         ].map((option) => {
           const price = currency === "INR" ? option.price_inr : option.price_usd
@@ -315,11 +315,12 @@ export default function CheckoutPage() {
           return {
             id: option.name,
             title: option.name,
+            subtitle: option.complexity,
             price: priceDisplay,
             emoji: option.emoji,
             action: () => {
               updateOrder({
-                modelingAddOn: {
+                scriptAddOn: {
                   name: option.name,
                   price: price,
                   complexity: option.complexity,
@@ -332,32 +333,32 @@ export default function CheckoutPage() {
       }
     }
 
-    // Step 1 for Startup/Premium OR Step 2/3 for Pro: Renders Question
-    const isRenderStep =
-      (currentStep === 1 && order.package?.includes3DModeling) || // Startup/Premium first step
-      (currentStep === 2 && order.package?.includes3DModeling) || // This shouldn't happen but safety
-      (currentStep === 3 && !order.package?.includes3DModeling) // Pro plan after modeling
+    // Step 1 for Pro/Premium OR Step 2/3 for Startup: Pitch Deck Question
+    const isPitchDeckStep =
+      (currentStep === 1 && order.package?.includesScriptwriting) || // Pro/Premium first step
+      (currentStep === 2 && order.package?.includesScriptwriting) || // This shouldn't happen but safety
+      (currentStep === 3 && !order.package?.includesScriptwriting) // Startup plan after script
 
-    if (isRenderStep) {
+    if (isPitchDeckStep) {
       return {
-        title: "Need 3D renders?",
-        subtitle: "High-quality still images perfect for marketing materials.",
+        title: "Need an investor pitch deck?",
+        subtitle: "Perfect complement to your explainer video for fundraising.",
         options: [
           {
             id: "yes",
-            title: "Yes, add renders",
-            emoji: "🖼️",
+            title: "Yes, add pitch deck",
+            emoji: "📊",
             action: () => {
-              updateOrder({ needsRenders: true })
+              updateOrder({ needsPitchDeck: true })
               setTimeout(handleNext, 300)
             },
           },
           {
             id: "no",
-            title: "No, animation only",
+            title: "No, video only",
             emoji: "🎬",
             action: () => {
-              updateOrder({ needsRenders: false, renderPackage: null })
+              updateOrder({ needsPitchDeck: false, pitchDeckPackage: null })
               setTimeout(handleNext, 300)
             },
           },
@@ -365,32 +366,32 @@ export default function CheckoutPage() {
       }
     }
 
-    // Render Package Selection
-    if (order.needsRenders && !order.renderPackage) {
+    // Pitch Deck Package Selection
+    if (order.needsPitchDeck && !order.pitchDeckPackage) {
       return {
-        title: "Choose render package",
-        subtitle: "Select the number of high-quality renders you need.",
+        title: "Choose pitch deck package",
+        subtitle: "Select the deck that matches your funding goals.",
         options: [
           {
-            name: "Basic Pack",
-            quantity: orderConfig.renderOptions.basic.quantity,
-            price_inr: orderConfig.renderOptions.basic.price_inr,
-            price_usd: orderConfig.renderOptions.basic.price_usd,
-            emoji: "📸",
+            name: "Basic Deck",
+            slides: orderConfig.pitchDeckOptions.basic.slides,
+            price_inr: orderConfig.pitchDeckOptions.basic.price_inr,
+            price_usd: orderConfig.pitchDeckOptions.basic.price_usd,
+            emoji: "📊",
           },
           {
-            name: "Standard Pack",
-            quantity: orderConfig.renderOptions.standard.quantity,
-            price_inr: orderConfig.renderOptions.standard.price_inr,
-            price_usd: orderConfig.renderOptions.standard.price_usd,
-            emoji: "📷",
+            name: "Standard Deck",
+            slides: orderConfig.pitchDeckOptions.standard.slides,
+            price_inr: orderConfig.pitchDeckOptions.standard.price_inr,
+            price_usd: orderConfig.pitchDeckOptions.standard.price_usd,
+            emoji: "📈",
           },
           {
-            name: "Premium Pack",
-            quantity: orderConfig.renderOptions.premium.quantity,
-            price_inr: orderConfig.renderOptions.premium.price_inr,
-            price_usd: orderConfig.renderOptions.premium.price_usd,
-            emoji: "🎥",
+            name: "VC-Ready Deck",
+            slides: orderConfig.pitchDeckOptions.premium.slides,
+            price_inr: orderConfig.pitchDeckOptions.premium.price_inr,
+            price_usd: orderConfig.pitchDeckOptions.premium.price_usd,
+            emoji: "🚀",
           },
         ].map((option) => {
           const price = currency === "INR" ? option.price_inr : option.price_usd
@@ -399,15 +400,15 @@ export default function CheckoutPage() {
           return {
             id: option.name,
             title: option.name,
-            subtitle: `${option.quantity} renders`,
+            subtitle: `${option.slides} professional slides`,
             price: priceDisplay,
             emoji: option.emoji,
             action: () => {
               updateOrder({
-                renderPackage: {
+                pitchDeckPackage: {
                   name: option.name,
                   price: price,
-                  quantity: option.quantity,
+                  slides: option.slides,
                 },
               })
               setTimeout(handleNext, 300)
@@ -420,7 +421,7 @@ export default function CheckoutPage() {
     // Summary
     return {
       title: "Order summary",
-      subtitle: "Review your selections before confirming.",
+      subtitle: "Review your package before we get started.",
       isSummary: true,
     }
   }
@@ -488,43 +489,43 @@ export default function CheckoutPage() {
                   <div className="flex justify-between items-center py-3 border-b border-neutral-800 sm:py-4">
                     <div>
                       <h4 className="font-semibold text-white text-base sm:text-lg">{order.package.name} Plan</h4>
-                      <p className="text-neutral-400 text-sm mt-0.5 sm:mt-1">3D Animation Package</p>
+                      <p className="text-neutral-400 text-sm mt-0.5 sm:mt-1">SaaS Explainer Video</p>
                     </div>
                     <span className="font-bold text-white text-base sm:text-lg">{order.package.price}</span>
                   </div>
 
-                  {order.modelingAddOn && (
+                  {order.scriptAddOn && (
                     <div className="flex justify-between items-center py-3 border-b border-neutral-800 sm:py-4">
                       <div>
                         <h4 className="font-semibold text-white text-sm sm:text-base">
-                          3D Modeling - {order.modelingAddOn.name}
+                          Scriptwriting - {order.scriptAddOn.name}
                         </h4>
                         <p className="text-neutral-400 text-xs mt-0.5 sm:text-sm sm:mt-1">
-                          {order.modelingAddOn.complexity}
+                          {order.scriptAddOn.complexity}
                         </p>
                       </div>
                       <span className="font-bold text-white text-sm sm:text-base">
-                        +{formatPrice(order.modelingAddOn.price)}
+                        +{formatPrice(order.scriptAddOn.price)}
                       </span>
                     </div>
                   )}
 
-                  {order.renderPackage && (
+                  {order.pitchDeckPackage && (
                     <div className="flex justify-between items-center py-3 border-b border-neutral-800 sm:py-4">
                       <div>
-                        <h4 className="font-semibold text-white text-sm sm:text-base">{order.renderPackage.name}</h4>
+                        <h4 className="font-semibold text-white text-sm sm:text-base">{order.pitchDeckPackage.name}</h4>
                         <p className="text-neutral-400 text-xs mt-0.5 sm:text-sm sm:mt-1">
-                          {order.renderPackage.quantity} renders
+                          {order.pitchDeckPackage.slides} investor-ready slides
                         </p>
                       </div>
                       <span className="font-bold text-white text-sm sm:text-base">
-                        +{formatPrice(order.renderPackage.price)}
+                        +{formatPrice(order.pitchDeckPackage.price)}
                       </span>
                     </div>
                   )}
 
                   <div className="flex justify-between items-center py-4 bg-[#C6FF3A]/10 rounded-xl px-4 mt-4 sm:py-6 sm:rounded-2xl sm:px-6 sm:mt-6">
-                    <h4 className="text-lg font-bold text-white sm:text-xl">Total</h4>
+                    <h4 className="text-lg font-bold text-white sm:text-xl">Total Investment</h4>
                     <span className="text-2xl font-bold text-[#C6FF3A] sm:text-3xl">
                       {formatPrice(calculateTotal())}
                     </span>
