@@ -26,7 +26,7 @@ export default function AdminLogin() {
     setTimeout(() => {
       // Default credentials
       if (
-        (email === "admin@theskitbit.com" && password === "1234") ||
+        (email === "admin@reelix.com" && password === "1234") ||
         (email === "Addy@theskitbit.com" && password === "1234")
       ) {
         // Set a cookie that expires in 24 hours

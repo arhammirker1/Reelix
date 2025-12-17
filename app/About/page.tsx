@@ -16,14 +16,14 @@ export default function AboutPage() {
     ],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Miami",
-      addressRegion: "FL",
-      addressCountry: "US",
+      addressLocality: "Karachi",
+      addressRegion: "Sindh",
+      addressCountry: "Pakistan",
     },
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+1-555-555-5555",
+        telephone: "+92-328-2784739",
         contactType: "customer service",
       },
     ],
@@ -33,6 +33,7 @@ export default function AboutPage() {
       { "@type": "Place", name: "New York" },
       { "@type": "Place", name: "Canada" },
       { "@type": "Place", name: "United Kingdom" },
+      { "@type": "Place", name: "Pakistan" },
     ],
   };
 
